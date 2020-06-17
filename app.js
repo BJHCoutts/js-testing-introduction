@@ -1,4 +1,5 @@
-const { generateText, createElement, validateInput } = require('./util');
+// Commodi molestiae ip
+const { checkAndGenerate, createElement, validateInput } = require('./util');
 
 const initApp = () => {
   // Initializes the app, registers the button click listener
@@ -12,18 +13,22 @@ const addUser = () => {
   const newUserNameInput = document.querySelector('input#name');
   const newUserAgeInput = document.querySelector('input#age');
 
-  if (
-    !validateInput(newUserNameInput.value, true, false) ||
-    !validateInput(newUserAgeInput.value, false, true)
-  ) {
-    return;
-  }
+  // this is removed and added to the utils.test.js file
+  // if (
+  //   !validateInput(newUserNameInput.value, true, false) ||
+  //   !validateInput(newUserAgeInput.value, false, true)
+  // ) {
+  //   return;
+  // }
 
-  const userList = document.querySelector('.user-list');
-  const outputText = generateText(
+  const outputText = checkAndGenerate(
     newUserNameInput.value,
     newUserAgeInput.value
   );
+  if (!outputText){
+    return console.error('check and generate output error')
+  }
+  const userList = document.querySelector('.user-list');
   const element = createElement('li', outputText, 'user-item');
   userList.appendChild(element);
 };
