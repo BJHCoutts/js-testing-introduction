@@ -1,14 +1,8 @@
+const { fetchData } = require('./http')
+
 const generateText = (name, age) => {
   // Returns output text
   return `${name} (${age} years old)`;
-};
-
-exports.createElement = (type, text, className) => {
-  // Creates a new HTML element and returns it
-  const newElement = document.createElement(type);
-  newElement.classList.add(className);
-  newElement.textContent = text;
-  return newElement;
 };
 
 const validateInput = (text, notEmpty, isNumber) => {
@@ -25,6 +19,21 @@ const validateInput = (text, notEmpty, isNumber) => {
   return true;
 };
 
+const printTitle = () => {
+  loadTitle().then(title =>
+    console.log(title)
+  )
+}
+
+const loadTitle = () => {
+  console.log('loadTitle')
+  return fetchData().then( extractedData => {
+    const title = extractedData.title
+    const transformedTitle = title.toUpperCase()
+    return transformedTitle
+  })
+}
+
 exports.checkAndGenerate = (name, age) => {
   if (
     !validateInput(name, true, false) ||
@@ -35,5 +44,15 @@ exports.checkAndGenerate = (name, age) => {
   return generateText(name,age)
 }
 
+exports.createElement = (type, text, className) => {
+  // Creates a new HTML element and returns it
+  const newElement = document.createElement(type);
+  newElement.classList.add(className);
+  newElement.textContent = text;
+  return newElement;
+};
+
 exports.generateText = generateText
 exports.validateInput = validateInput
+exports.printTitle = printTitle
+exports.loadTitle = loadTitle

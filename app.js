@@ -1,5 +1,5 @@
 // Commodi molestiae ip
-const { checkAndGenerate, createElement, validateInput } = require('./util');
+const { checkAndGenerate, createElement } = require('./util');
 
 const initApp = () => {
   // Initializes the app, registers the button click listener

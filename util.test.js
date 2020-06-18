@@ -1,4 +1,4 @@
-const {generateText, checkAndGenerate} = require('./util')
+const {generateText, checkAndGenerate, printTitle, loadTitle} = require('./util')
 const puppeteer = require('puppeteer')
 
 test('should output name and age', () => {
@@ -40,3 +40,9 @@ test('should click around', async () => {
 	expect(finalText).toBe('Brian (28 years old)')
 }, 10000)
 // third argument to test is max timeout
+
+test('should print uppercase text', () => {
+	loadTitle().then(title => {
+		expect(title).toBe('DELECTUS AUT AUTEM')
+	})
+})
