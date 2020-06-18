@@ -1,6 +1,7 @@
 const {generateText, checkAndGenerate, printTitle, loadTitle} = require('./util')
 const puppeteer = require('puppeteer')
-jest.mock('./http.js')
+// jest.mock('./http.js')
+// without http.js mocked it uses mocked axios, as get is a universal function
 
 test('should output name and age', () => {
 	const text = generateText('Max', 29)
