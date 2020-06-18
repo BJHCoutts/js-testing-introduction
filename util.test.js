@@ -1,5 +1,6 @@
 const {generateText, checkAndGenerate, printTitle, loadTitle} = require('./util')
 const puppeteer = require('puppeteer')
+jest.mock('./http.js')
 
 test('should output name and age', () => {
 	const text = generateText('Max', 29)

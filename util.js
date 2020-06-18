@@ -26,7 +26,6 @@ const printTitle = () => {
 }
 
 const loadTitle = () => {
-  console.log('loadTitle')
   return fetchData().then( extractedData => {
     const title = extractedData.title
     const transformedTitle = title.toUpperCase()
